@@ -1,3 +1,5 @@
+import User from "../src/user/user.model.js"
+import {hash} from "argon2"
 const createAdmin = async () => {
     try {
       const aEmail = "admin@gmail.com"

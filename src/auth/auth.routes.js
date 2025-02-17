@@ -6,6 +6,6 @@ const router = Router();
 
 router.post("/register",registerValidator,register);
 
-router.post("/login",loginValidator,login);
+router.post("/login", uploadProfilePicture.single("profilePicture"), loginValidator,login);
 
 export default router;

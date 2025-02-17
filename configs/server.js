@@ -6,7 +6,8 @@ import helmet from "helmet";
 import morgan from "morgan";   
 import { dbConnection } from "./mongo.js";
 import { swaggerDocs, swaggerUi } from "./swagger.js";
-import  apiLimiter from "../src/middlewares/rate-limit-validator.js";
+import  apiLimiter from "../src/middlewares/rate-limit-validators.js";
+import  createAdmin  from "./default-admin.js"
 
 const middlewares = (app) => {
     app.use(express.urlencoded({ extended: false }));
@@ -34,6 +35,7 @@ const conectarDB = async () => {
 export const initServer = () => {
     const app = express();
     try {
+        createAdmin();
         middlewares(app);
         conectarDB();
         routes(app);
