@@ -5,8 +5,6 @@ import { handleErrors } from "./handle-errors.js";
 import { validateJWT } from "../middlewares/validate-jwt.js"
 import { hasRoles } from "../middlewares/validate-roles.js"
 import { deleteFileOnError } from "../middlewares/delete-file-on-error.js"
-import { hasRoles } from "../middlewares/validate-roles.js"
-import { verifyPassword } from "../middlewares/verify-password.js"
 
 export const registerValidator = [
     body("username").notEmpty().withMessage("El username es requerido"),
@@ -37,16 +35,21 @@ export const loginValidator = [
 
 export const updatePasswordValidator = [
     validateJWT,
-    hasRoles("ADMIN_ROLE", "CLIENT_ROLE"),
-    body("password").custom(verifyPassword),
-    body("newPassword").isLength({ min: 8 }).withMessage("El password debe contener al menos 8 caracteres"),
+    hasRoles("ADMIN_ROLE", "USER_ROLE"),
+    body("newPassword").isStrongPassword({
+        minLength: 8,
+        minLowercase: 1,
+        minUppercase: 1,
+        minNumbers: 1,
+        minSymbols: 1
+    }),
     validarCampos,
     handleErrors
 ];
  
 export const updateUserValidator = [
     validateJWT,
-    hasRoles("ADMIN_ROLE", "CLIENT_ROLE"),
+    hasRoles("ADMIN_ROLE", "USER_ROLE"),
     body("username").optional().isString().withMessage("Username es en formáto erróneo"),
     body("email").optional().isEmail().withMessage("No es un email válido"),
     body("email").optional().custom(emailExists),
@@ -57,7 +60,7 @@ export const updateUserValidator = [
 
 export const updateProfilePicValidator = [
     validateJWT,
-    hasRoles("ADMIN_ROLE", "CLIENT_ROLE"),
+    hasRoles("ADMIN_ROLE", "USER_ROLE"),
     validarCampos,
     deleteFileOnError,
     handleErrors

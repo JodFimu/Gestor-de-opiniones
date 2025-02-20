@@ -14,7 +14,5 @@ export const usernameExists = async (username = "") => {
     }
 }
 
-export const verifyPassword = async ()
-
 
 
