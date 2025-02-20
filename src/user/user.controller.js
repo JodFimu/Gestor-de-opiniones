@@ -1,6 +1,10 @@
 import User from "../user/user.model.js"
 import { hash, verify } from "argon2" 
+import fs from "fs/promises";
+import { join, dirname } from "path";
+import { fileURLToPath } from "url";
 
+const __dirname = dirname(fileURLToPath(import.meta.url));
 export const updateUser = async (req,res) =>{
     try {
         const { usuario } = req;

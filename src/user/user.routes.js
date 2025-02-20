@@ -7,6 +7,6 @@ const router = Router();
 
 router.put("/updateUser", updateUserValidator, updateUser);
 router.patch("/updatePassword", updatePasswordValidator, updatePassword);
-router.patch("/updatePicture", updateProfilePicValidator, updatePicture);
+router.patch("/updatePicture", uploadProfilePicture.single("newProfilePic"),updateProfilePicValidator, updatePicture);
 
 export default router;
