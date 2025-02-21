@@ -7,9 +7,10 @@ import morgan from "morgan";
 import { dbConnection } from "./mongo.js";
 import { swaggerDocs, swaggerUi } from "./swagger.js";
 import  apiLimiter from "../src/middlewares/rate-limit-validators.js";
-import  createAdmin  from "./default-admin.js"
+import  {createAdmin, createDefaultCategory } from "./default-data.js"
 import authRoutes from "../src/auth/auth.routes.js";
 import userRoutes from "../src/user/user.routes.js";
+import categoryRoutes from "../src/category/category.routes.js";
 
 const middlewares = (app) => {
     app.use(express.urlencoded({ extended: false }));
@@ -24,6 +25,7 @@ const routes = (app) => {
     app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
     app.use("/gestorDeComentarios/auth", authRoutes);
     app.use("/gestorDeComentarios/user", userRoutes);
+    app.use("/gestorDeComentarios/category", categoryRoutes);
 }
 
 const conectarDB = async () => {
@@ -39,6 +41,7 @@ export const initServer = () => {
     const app = express();
     try {
         createAdmin();
+        createDefaultCategory();
         middlewares(app);
         conectarDB();
         routes(app);

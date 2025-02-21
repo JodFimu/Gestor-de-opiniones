@@ -1,4 +1,5 @@
 import User from "../user/user.model.js"
+import Category from "../category/category.model.js"
 
 export const emailExists = async (email = "") => {
     const existe = await User.findOne({email})
@@ -14,5 +15,11 @@ export const usernameExists = async (username = "") => {
     }
 }
 
+export const categoryExist = async (name= "") => {
+    const existe = await Category.findOne({name})
+    if(existe){
+        throw new Error(`The category ${name} already exists`)
+    }
+}
 
 
