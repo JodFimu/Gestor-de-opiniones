@@ -18,7 +18,13 @@ const router = Router();
  *           schema:
  *             type: object
  *             properties:
- *               // ...define properties...
+ *               username:
+ *                 type: string
+ *               email:
+ *                 type: string
+ *               role:
+ *                 type: string
+ *                 enum: ["ADMIN_ROLE", "USER_ROLE"]
  *     responses:
  *       200:
  *         description: User updated successfully
@@ -40,7 +46,10 @@ router.put("/updateUser", updateUserValidator, updateUser);
  *           schema:
  *             type: object
  *             properties:
- *               // ...define properties...
+ *               password:
+ *                 type: string
+ *               newPassword:
+ *                 type: string
  *     responses:
  *       200:
  *         description: Password updated successfully

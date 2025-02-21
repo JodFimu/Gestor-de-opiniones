@@ -18,10 +18,15 @@ const router = Router();
  *           schema:
  *             type: object
  *             properties:
+ *               username:
+ *                 type: string
+ *               email:
+ *                 type: string
+ *               password:
+ *                 type: string
  *               profilePicture:
  *                 type: string
  *                 format: binary
- *               // ...define other properties...
  *     responses:
  *       201:
  *         description: User registered successfully
@@ -43,7 +48,12 @@ router.post("/register", uploadProfilePicture.single("profilePicture"), register
  *           schema:
  *             type: object
  *             properties:
- *               // ...define properties...
+ *               email:
+ *                 type: string
+ *               username:
+ *                 type: string
+ *               password:
+ *                 type: string
  *     responses:
  *       200:
  *         description: User logged in successfully
