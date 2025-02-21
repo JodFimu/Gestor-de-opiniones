@@ -3,7 +3,7 @@ import swaggerUi from "swagger-ui-express";
 
 const options ={
     swaggerDefinition:{
-        openapi:"1.0.0",
+        openapi:"3.0.0",
         info:{
             title: "Gestor de opiniones API",
             version: "1.0.0",
@@ -15,12 +15,14 @@ const options ={
         },
         servers:[
             {
-                url: "http://127.0.0.1:3001/GestorOpiniones/v1"
+                url: "http://127.0.0.1:3000/GestorOpiniones"
             }
         ]
     },
     apis:[
-        
+        "./src/auth/auth.routes.js",
+        "./src/user/user.routes.js",
+        "./src/category/category.routes.js",
     ]
 }
 
