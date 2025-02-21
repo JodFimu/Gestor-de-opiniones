@@ -1,5 +1,6 @@
 import Post from "../post/post.model.js"
 import Category from "../category/category.model.js"
+import User from "../user/user.model.js"
 
 export const createPost = async(req, res) =>{
     try {
@@ -15,7 +16,7 @@ export const createPost = async(req, res) =>{
             })
         }
 
-        const post = await Category.create(data);
+        const post = await Post.create(data);
 
         return res.status(201).json({
             message: "Post has been created",
@@ -30,9 +31,31 @@ export const createPost = async(req, res) =>{
 }
 
 export const editPost = async (req, res) =>{
-    try {
-        
-    } catch (err) {
-        
+    try{
+    const { usuario } = req;
+    const data = req.body;
+    const pid = req.params;
+
+
+    if(usuario._id != data.auth){
+        return res.status(400).json({
+            success: false,
+            msg: 'No puedes editar este post'
+        });
+    }
+
+    const updatedPost = await Post.findByIdAndUpdate(pid, data, {new: true});
+
+    res.status(200).json({
+        success: true,
+        msg: 'Post Actualizado',
+        user: updatedPost,
+    });
+    }catch (err) {
+        res.status(500).json({
+            success: false,
+            msg: 'Error al actualizar el post',
+            error: err.message
+        });
     }
 }

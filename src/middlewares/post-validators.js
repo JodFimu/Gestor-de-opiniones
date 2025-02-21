@@ -11,3 +11,11 @@ export const createPostValidator = [
     validarCampos,
     handleErrors
 ]
+
+export const editPostValidator = [
+    validateJWT,
+    hasRoles("USER_ROLE"),
+    body("category").isMongoId().withMessage("No es un id valido"),
+    validarCampos,
+    handleErrors
+]
