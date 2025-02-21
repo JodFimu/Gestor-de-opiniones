@@ -59,3 +59,33 @@ export const editPost = async (req, res) =>{
         });
     }
 }
+
+export const deletePost = async (req, res) =>{
+    try{
+    const { usuario } = req;
+    const data = req.body;
+    const pid = req.params;
+
+
+    if(usuario._id != data.auth){
+        return res.status(400).json({
+            success: false,
+            msg: 'No puedes eliminar este post'
+        });
+    }
+
+    const updatedPost = await Post.findByIdAndUpdate(pid, { stauts: false }, {new: true});
+
+    res.status(200).json({
+        success: true,
+        msg: 'Post eliminado',
+        user: updatedPost,
+    });
+    }catch (err) {
+        res.status(500).json({
+            success: false,
+            msg: 'Error al eliminar el post',
+            error: err.message
+        });
+    }
+}
