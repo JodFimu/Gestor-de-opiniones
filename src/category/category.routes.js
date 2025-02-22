@@ -1,6 +1,6 @@
-import {createCategory, editCategory, deleteCategory} from './category.controller.js';
-import {createCategoryValidator, editCategoryValidator, deleteCategoryValidator} from '../middlewares/category-validators.js';
-import {Router} from 'express';
+import { createCategory, editCategory, deleteCategory } from './category.controller.js';
+import { createCategoryValidator, editCategoryValidator, deleteCategoryValidator } from '../middlewares/category-validators.js';
+import { Router } from 'express';
 
 const router = Router();
 
@@ -17,7 +17,10 @@ const router = Router();
  *           schema:
  *             type: object
  *             properties:
- *               // ...define properties...
+ *               name:
+ *                 type: string
+ *               description:
+ *                 type: string
  *     responses:
  *       201:
  *         description: Category created successfully
@@ -46,7 +49,10 @@ router.post("/createCategory", createCategoryValidator, createCategory);
  *           schema:
  *             type: object
  *             properties:
- *               // ...define properties...
+ *               name:
+ *                 type: string
+ *               description:
+ *                 type: string
  *     responses:
  *       200:
  *         description: Category updated successfully
@@ -74,6 +80,6 @@ router.put("/editCategory/:cid", editCategoryValidator, editCategory);
  *       400:
  *         description: Invalid input
  */
-router.delete("/deleteCategory/:cid",deleteCategoryValidator, deleteCategory);
+router.delete("/deleteCategory/:cid", deleteCategoryValidator, deleteCategory);
 
 export default router;
