@@ -12,3 +12,20 @@ export const createCommentValidator = [
     validarCampos,
     handleErrors
 ]
+
+export const editCommentValidator = [
+    validateJWT,
+    hasRoles("USER_ROLE"),
+    body("comment").notEmpty().withMessage("Comment is required"),
+    param("oid").isMongoId().withMessage("No es un id valido"),
+    validarCampos,
+    handleErrors
+]
+
+export const deleteCommentValidator = [
+    validateJWT,
+    hasRoles("USER_ROLE"),
+    param("oid").isMongoId().withMessage("No es un id valido"),
+    validarCampos,
+    handleErrors
+]
