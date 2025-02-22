@@ -15,7 +15,7 @@ const options ={
         },
         servers:[
             {
-                url: "http://127.0.0.1:3000/GestorOpiniones"
+                url: "http://127.0.0.1:3000/GestorOpiniones/v1"
             }
         ]
     },
@@ -23,6 +23,8 @@ const options ={
         "./src/auth/auth.routes.js",
         "./src/user/user.routes.js",
         "./src/category/category.routes.js",
+        "./src/post/post.routes.js",
+        "./src/comment/comment.routes.js"
     ]
 }
 

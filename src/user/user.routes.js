@@ -1,5 +1,5 @@
 import { Router } from "express";
-import {updateUserValidator, updatePasswordValidator, updateProfilePicValidator} from "../middlewares/user-validators.js";
+import { updateUserValidator, updatePasswordValidator, updateProfilePicValidator } from "../middlewares/user-validators.js";
 import { updateUser, updatePassword, updatePicture } from "./user.controller.js";
 import { uploadProfilePicture } from "../middlewares/multer-uploads.js";
 
@@ -80,6 +80,6 @@ router.patch("/updatePassword", updatePasswordValidator, updatePassword);
  *       400:
  *         description: Invalid input
  */
-router.patch("/updatePicture", uploadProfilePicture.single("newProfilePic"),updateProfilePicValidator, updatePicture);
+router.patch("/updatePicture", uploadProfilePicture.single("newProfilePic"), updateProfilePicValidator, updatePicture);
 
 export default router;

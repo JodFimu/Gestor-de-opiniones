@@ -1,0 +1,582 @@
+{
+	"info": {
+		"_postman_id": "668018cb-c3e2-44c3-b1b8-7252189f9947",
+		"name": "Gestor de comentarios",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41959042"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "Registro",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "aaaaaa",
+									"contentType": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "abb@gmail.com",
+									"contentType": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Abb12378!",
+									"contentType": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "profilePicture",
+									"type": "file",
+									"src": "/C:/Users/jdfig/Pictures/yo.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/gestorDeComentarios/v1/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"gestorDeComentarios",
+								"v1",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"aaaaaa\",\r\n    \"password\": \"Abb12378!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/gestorDeComentarios/v1/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"gestorDeComentarios",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "updatePassword",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I2ODg3ZDQwZTE4NGViYWUzYjc1YTYiLCJpYXQiOjE3NDAwMTU3NDUsImV4cCI6MTc0MDAxOTM0NX0.JYNMGjD-OKu3PvEdQo4XnrZke3df4jh2i6Z0l7nX98M",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\": \"Abb12378!\",\r\n    \"newPassword\": \"BBaa987654?\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/gestorDeComentarios/v1/user/updatePassword",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"gestorDeComentarios",
+								"v1",
+								"user",
+								"updatePassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateUser",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I2ODg3ZDQwZTE4NGViYWUzYjc1YTYiLCJpYXQiOjE3NDAwMTc3ODMsImV4cCI6MTc0MDAyMTM4M30.-pMZhmJDMC3gs5Db_OW9Z0Ptn-eT0_TQ9nlthtqxdL4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"ccccc\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/gestorDeComentarios/v1/user/updateUser",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"gestorDeComentarios",
+								"v1",
+								"user",
+								"updateUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateProfilePic",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I2ODg3ZDQwZTE4NGViYWUzYjc1YTYiLCJpYXQiOjE3NDAwMTc3ODMsImV4cCI6MTc0MDAyMTM4M30.-pMZhmJDMC3gs5Db_OW9Z0Ptn-eT0_TQ9nlthtqxdL4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "newProfilePic",
+									"type": "file",
+									"src": "/C:/Users/jdfig/Pictures/Camera Roll/WIN_20240610_11_26_42_Pro.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/gestorDeComentarios/v1/user/updatePicture",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"gestorDeComentarios",
+								"v1",
+								"user",
+								"updatePicture"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "category",
+			"item": [
+				{
+					"name": "createCategory",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"tecnologia\",\r\n    \"description\": \"Categoria sobre tecnologia\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/gestorDeComentarios/v1/category/createCategory",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"gestorDeComentarios",
+								"v1",
+								"category",
+								"createCategory"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editCategory",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I1NDdkNDY4ZTJlMzM1NTdjY2Q1MzUiLCJpYXQiOjE3NDAxODgxMzMsImV4cCI6MTc0MDE5MTczM30.KgyNlb1FRaKMcH5K7jNYWNDiSuw57TZa5aSYteeHbdM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\": \"todo sobre tecnologia\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/gestorDeComentarios/v1/category/editCategory/67b69b35a8f2d05fc2c9850f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"gestorDeComentarios",
+								"v1",
+								"category",
+								"editCategory",
+								"67b69b35a8f2d05fc2c9850f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteCategory",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I1NDdkNDY4ZTJlMzM1NTdjY2Q1MzUiLCJpYXQiOjE3NDAxODgxMzMsImV4cCI6MTc0MDE5MTczM30.KgyNlb1FRaKMcH5K7jNYWNDiSuw57TZa5aSYteeHbdM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/gestorDeComentarios/v1/category/deleteCategory/67b69b35a8f2d05fc2c9850f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"gestorDeComentarios",
+								"v1",
+								"category",
+								"deleteCategory",
+								"67b69b35a8f2d05fc2c9850f"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "post",
+			"item": [
+				{
+					"name": "post",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I2ODg3ZDQwZTE4NGViYWUzYjc1YTYiLCJpYXQiOjE3NDAxODgzMjIsImV4cCI6MTc0MDE5MTkyMn0.iDKHZF4XUCrcXASs9SgEncPwMplOvgGRXS-gxOuDMFo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"tecnologia\",\r\n    \"content\": \"publicacion de tecnologia\",\r\n    \"category\": \"67b69b35a8f2d05fc2c9850f\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/gestorDeComentarios/v1/post/post",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"gestorDeComentarios",
+								"v1",
+								"post",
+								"post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editPost",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I2ODg3ZDQwZTE4NGViYWUzYjc1YTYiLCJpYXQiOjE3NDAxODgzMjIsImV4cCI6MTc0MDE5MTkyMn0.iDKHZF4XUCrcXASs9SgEncPwMplOvgGRXS-gxOuDMFo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\": \"ejemplo de edicion\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/gestorDeComentarios/v1/post/editPost/67b92b7690744e27e2091855",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"gestorDeComentarios",
+								"v1",
+								"post",
+								"editPost",
+								"67b92b7690744e27e2091855"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deletePost",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I2ODg3ZDQwZTE4NGViYWUzYjc1YTYiLCJpYXQiOjE3NDAxODgzMjIsImV4cCI6MTc0MDE5MTkyMn0.iDKHZF4XUCrcXASs9SgEncPwMplOvgGRXS-gxOuDMFo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/gestorDeComentarios/v1/post/deletePost/67b92b7690744e27e2091855",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"gestorDeComentarios",
+								"v1",
+								"post",
+								"deletePost",
+								"67b92b7690744e27e2091855"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comments",
+			"item": [
+				{
+					"name": "createComment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I2ODg3ZDQwZTE4NGViYWUzYjc1YTYiLCJpYXQiOjE3NDAxOTI5NDMsImV4cCI6MTc0MDE5NjU0M30.jz6-pJqZYblMcZvv-49Yvqxa1rKVETAfQMyH09QPrYU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"comment\": \"mala opinion\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/gestorDeComentarios/v1/comment/comment/67b92b7690744e27e2091855",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"gestorDeComentarios",
+								"v1",
+								"comment",
+								"comment",
+								"67b92b7690744e27e2091855"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editComment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I2ODg3ZDQwZTE4NGViYWUzYjc1YTYiLCJpYXQiOjE3NDAxOTI5NDMsImV4cCI6MTc0MDE5NjU0M30.jz6-pJqZYblMcZvv-49Yvqxa1rKVETAfQMyH09QPrYU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"comment\": \"buena opinion\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/gestorDeComentarios/v1/comment/editComment/67b93cbd57193c3a87a39856",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"gestorDeComentarios",
+								"v1",
+								"comment",
+								"editComment",
+								"67b93cbd57193c3a87a39856"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteComment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I2ODg3ZDQwZTE4NGViYWUzYjc1YTYiLCJpYXQiOjE3NDAxOTI5NDMsImV4cCI6MTc0MDE5NjU0M30.jz6-pJqZYblMcZvv-49Yvqxa1rKVETAfQMyH09QPrYU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/gestorDeComentarios/v1/comment/deleteComment/67b93cbd57193c3a87a39856",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"gestorDeComentarios",
+								"v1",
+								"comment",
+								"deleteComment",
+								"67b93cbd57193c3a87a39856"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

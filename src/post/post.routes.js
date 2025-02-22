@@ -37,10 +37,17 @@ router.post("/post", createPostValidator, createPost);
 
 /**
  * @swagger
- * /editPost:
+ * /editPost/{pid}:
  *   put:
  *     summary: Edit an existing post
  *     tags: [Posts]
+ *     parameters:
+ *       - in: path
+ *         name: pid
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Post ID
  *     requestBody:
  *       required: true
  *       content:
@@ -68,10 +75,17 @@ router.put("/editPost/:pid", editPostValidator, editPost);
 
 /**
  * @swagger
- * /deletePost:
+ * /deletePost/{pid}:
  *   delete:
  *     summary: Delete an existing post
  *     tags: [Posts]
+ *     parameters:
+ *       - in: path
+ *         name: pid
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Post ID
  *     requestBody:
  *       required: true
  *       content:
