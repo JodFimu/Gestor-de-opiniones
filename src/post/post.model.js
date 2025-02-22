@@ -24,12 +24,6 @@ const postSchema = new Schema({
         ref: 'Category',
         required: true
     },
-    comments: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'Comment'
-        }
-    ],
     status: {
         type: Boolean,
         default: true
@@ -37,7 +31,7 @@ const postSchema = new Schema({
 });
 
 postSchema.methods.toJSON = function(){
-    const {password, _id, ...post} = this.toObject()
+    const {_id, ...post} = this.toObject()
     post.pid = _id
     return post
 }
