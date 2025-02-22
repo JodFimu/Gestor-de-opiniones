@@ -16,7 +16,7 @@ export const editPostValidator = [
     validateJWT,
     hasRoles("USER_ROLE"),
     param("pid").isMongoId().withMessage("No es un id valido"),
-    body("category").isMongoId().withMessage("No es un id valido"),
+    body("category").optional().isMongoId().withMessage("No es un id valido"),
     validarCampos,
     handleErrors
 ]

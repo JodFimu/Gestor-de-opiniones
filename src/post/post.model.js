@@ -24,12 +24,16 @@ const postSchema = new Schema({
         ref: 'Category',
         required: true
     },
-    /*comments: [
+    comments: [
         {
             type: Schema.Types.ObjectId,
             ref: 'Comment'
         }
-    ]*/
+    ],
+    status: {
+        type: Boolean,
+        default: true
+    }
 });
 
 postSchema.methods.toJSON = function(){

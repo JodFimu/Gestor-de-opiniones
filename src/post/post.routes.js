@@ -64,7 +64,7 @@ router.post("/post", createPostValidator, createPost);
  *       500:
  *         description: Internal server error
  */
-router.put("/editPost", editPostValidator, editPost);
+router.put("/editPost/:pid", editPostValidator, editPost);
 
 /**
  * @swagger
@@ -89,6 +89,6 @@ router.put("/editPost", editPostValidator, editPost);
  *       500:
  *         description: Internal server error
  */
-router.delete("/deletePost", deletePostValidator, deletePost);
+router.delete("/deletePost/:pid", deletePostValidator, deletePost);
 
 export default router;

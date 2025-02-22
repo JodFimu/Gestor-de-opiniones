@@ -56,3 +56,4 @@ export const createDefaultCategory = async () => {
     }
 }
 
+

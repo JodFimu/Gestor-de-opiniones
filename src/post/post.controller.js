@@ -1,11 +1,12 @@
 import Post from "../post/post.model.js"
 import Category from "../category/category.model.js"
-import User from "../user/user.model.js"
 
 export const createPost = async(req, res) =>{
     try {
         const {usuario} = req
         const data = req.body
+
+        data.auth = usuario._id
 
         const categoria = Category.findById(data.category)
 
@@ -34,10 +35,11 @@ export const editPost = async (req, res) =>{
     try{
     const { usuario } = req;
     const data = req.body;
-    const pid = req.params;
+    const {pid} = req.params;
 
+    const post = await Post.findById(pid);
 
-    if(usuario._id != data.auth){
+    if(usuario._id.toString() !== post.auth.toString()){
         return res.status(400).json({
             success: false,
             msg: 'No puedes editar este post'
@@ -63,18 +65,18 @@ export const editPost = async (req, res) =>{
 export const deletePost = async (req, res) =>{
     try{
     const { usuario } = req;
-    const data = req.body;
-    const pid = req.params;
+    const {pid} = req.params;
 
+    const post = await Post.findById(pid);
 
-    if(usuario._id != data.auth){
+    if(usuario._id.toString() !== post.auth.toString()){
         return res.status(400).json({
             success: false,
-            msg: 'No puedes eliminar este post'
+            msg: 'No puedes editar este post'
         });
     }
 
-    const updatedPost = await Post.findByIdAndUpdate(pid, { stauts: false }, {new: true});
+    const updatedPost = await Post.findByIdAndUpdate(pid, { status: false }, {new: true});
 
     res.status(200).json({
         success: true,

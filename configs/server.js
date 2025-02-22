@@ -11,6 +11,7 @@ import  {createAdmin, createDefaultCategory } from "./default-data.js"
 import authRoutes from "../src/auth/auth.routes.js";
 import userRoutes from "../src/user/user.routes.js";
 import categoryRoutes from "../src/category/category.routes.js";
+import postRoutes from "../src/post/post.routes.js";
 
 const middlewares = (app) => {
     app.use(express.urlencoded({ extended: false }));
@@ -26,6 +27,7 @@ const routes = (app) => {
     app.use("/gestorDeComentarios/auth", authRoutes);
     app.use("/gestorDeComentarios/user", userRoutes);
     app.use("/gestorDeComentarios/category", categoryRoutes);
+    app.use("/gestorDeComentarios/post", postRoutes);
 }
 
 const conectarDB = async () => {

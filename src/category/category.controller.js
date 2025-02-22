@@ -1,4 +1,5 @@
 import Category from './category.model.js';
+import Post from '../post/post.model.js';
 
 export const getCategory = async (req, res) =>{
     try {
@@ -68,12 +69,21 @@ export const editCategory = async (req, res) => {
     }
 }
 
-export const deleteCategory = async (req,res) =>{
+export const deleteCategory = async (req, res) => {
     try {
-        const {cid } = req.params;
-        const category = await Category.findByIdAndUpdate(cid, {status: false}, {new: true});
+        const { cid } = req.params;
+        const category = await Category.findByIdAndUpdate(cid, { status: false }, { new: true });
+        const defaultCategory = await Category.findOne({ name: 'anything' });
 
-        // funcion para cambiar la categoria de todas las publicaciones con esta categoria
+        const posts = await Post.find({ category: cid });
+
+        console.log(defaultCategory);
+        await Promise.all(
+            posts.map(async (post) => {
+                post.category = defaultCategory._id;
+                return post.save();
+            })
+        );
 
         return res.status(200).json({
             success: true,
@@ -82,7 +92,10 @@ export const deleteCategory = async (req,res) =>{
         });
 
     } catch (err) {
-        
+        return res.status(500).json({
+            success: false,
+            message: 'Error al eliminar la categoria',
+            error: err.message
+        });
     }
-
 }
